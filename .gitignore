@@ -11,7 +11,7 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /db/*.sqlite3-*
-/db/schema.rb
+
 
 # Ignore DBF files from fias.nalog.ru
 /dbf/*
