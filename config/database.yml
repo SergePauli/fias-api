@@ -1,0 +1,25 @@
+# Postgresql. Versions 1.2.3 and up are supported.
+#   gem install pg
+#
+#   Ensure the Postgresql gem is defined in your Gemfile
+#   gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode  
+  pool: 5
+  timeout: 5000
+  username: rails2
+  password: qwerty123
+  host: localhost
+  database: fias
+
+development:
+  <<: *default
+  
+test:
+  <<: *default
+  
+production:
+  <<: *default
+  
