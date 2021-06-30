@@ -12,14 +12,15 @@ default: &default
   username: rails2
   password: qwerty123
   host: localhost
-  database: fias
+  
 
 development:
   <<: *default
-  
+  database: fias_dev
 test:
   <<: *default
+  database: fias_test
   
 production:
   <<: *default
-  
+  database: fias

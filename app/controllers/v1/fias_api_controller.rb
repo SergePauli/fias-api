@@ -32,9 +32,9 @@ class V1::FiasApiController < ApplicationController
           ids.push(ao.aoguid)
         end
         if ids.size == 0
-          #if there are no results in this select, the main select call freezes 
-          #for 15-40 seconds, so we have separate queries with checking 
-          # the result and do exit if it's empty 
+          #if there are no results in this select, the main select call freezes
+          #for 15-40 seconds, so we have separate queries with checking
+          # the result and do exit if it's empty
           render json: { status: "EMPTY", message: "ничего не надено для <#{query}> " }, status: :ok
           return
         end
@@ -49,7 +49,7 @@ class V1::FiasApiController < ApplicationController
       if !(useHouseModel || @res.exists?)
         # If nothing is found for the AddressObject, then need to use House-мodel
         @res = House.actual_only.order(:housenum, :strucnum, :buildnum)
-        @res = @res.where(aoguid: parent_predicate) if parent_predicate != nil
+        @res = @res.where(aoguid: parent_ids) if parent_ids != nil
         @res = @res.name_like(query.downcase.strip)
         useHouseModel = true
       end
@@ -83,6 +83,7 @@ class V1::FiasApiController < ApplicationController
   end
 
   private
+
   # Getting pagination param :limit :offset
   def use_pagination
     limit = params[:limit].blank? ? false : params[:limit].to_i
@@ -96,6 +97,7 @@ class V1::FiasApiController < ApplicationController
       @res = @res.offset(offset)
     end
   end
+
   # Prepare to using params :withParent, :fullInfo, :searchBar
   def do_before
     @fullInfo = params[:fullInfo] == "1"

@@ -14,13 +14,14 @@ Ruby on Rails project find russia's address with FIAS or KLADR code via API from
   config/puma.rb - server ports, thread options config
 
 * Database creation
-  1. run 'rails db:create' in command line
-  2. run 'rails db:migrate' in command line  
+  edit config/database.yml and put  
+  right database connection params 
+     
   
 
 * Database initialization
   1. just put in 'dbf' folder actual updates or fullbase in dbf format from 
   https://fias.nalog.ru/
-  2. run 'rails db:seed' in command line, And then, depending on the size of the input data, you will have to wait
+  2. run 'bin/setup' in command line, And then, depending on the size of the input data, you will have to wait
 
 
