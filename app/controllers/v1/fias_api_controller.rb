@@ -1,8 +1,9 @@
 class V1::FiasApiController < ApplicationController
   before_action :do_before
   # /fias get action
+  # :query - search query (search for)
   # :searchBar  - fulltext OneLineString search mode: 1 is ON, other - OFF
-  # :level :parent :regionID :query - available filter params
+  # :level :parent :regionID  - available filter params
   # :limit :offset - pagination params
   # :total_found - number of founded items: 1 is ON, other - OFF
   # :withParent, :fullInfo - items format params mode: 1 is ON, other - OFF
