@@ -84,6 +84,7 @@ class AddressObject < AddressRecord
       shortname: shortname,
       streetAddressLine: streetAddressLine,
       level: aoGroup,
+      postalCode: postalcode,
     }
     if fullInfo
       res[:fias_info] = as_json

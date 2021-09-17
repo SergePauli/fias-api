@@ -78,7 +78,11 @@ class House < AddressRecord
       streetAddressLine: streetAddressLine,
       rustype: ESTNAMESSHORT[eststatus] || STRNAMES[strstatus],
       level: :building,
+      postalCode: postalcode,
     }
+    res[:housenum] = housenum if !housenum.blank?
+    res[:buildnum] = buildnum if !buildnum.blank?
+    res[:strucnum] = strucnum if !strucnum.blank?
     # Gettin native FIAS record
     res[:fias_info] = as_json if fullInfo
     # Getting all the parents recursively
