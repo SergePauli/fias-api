@@ -1,7 +1,8 @@
 # Create REST-API service for address search in the FIAS    
 
-## Ruby on Rails project oneline searching valid russia's address via API from FIAS 
-_(Проект реализующий REST-API сервис для получения валидных адресов из ФИАС посредством поисковой строки и некоторых параметров фильтрации)_
+## Ruby on Rails project one-line searching valid russia's address via API from FIAS 
+_(Ruby on Rails REST-API сервис для получения данных валидных адресов из ФИАС посредством поисковой строки и некоторых параметров фильтрации)_
+_(используется мной в проекте "Медицинское Свидетельство о смерти")_
 
 ### Compatibility
   fias_api tested to work with:
@@ -69,6 +70,7 @@ _(Проект реализующий REST-API сервис для получе�
   * url of the service, by default: `http://<mydomen.com>/fias`
   * available parameters:
     * `query` - search query (search for) _(строка запроса)_
+    * `id` - get address by aoGUID or houseGUID(in case 'building' level's param) _(быстрое получение адреса по идентификатору в случае указания уровня building ищется по houseGUID )_ 
     * `searchBar`  - fulltext OneLineString search mode: `1` is ON, other - OFF
     _(режим свободного поиск одной строкой)_
     * `level` - filter address level as (`region`,`district`,`city`,`territory`, `town`,`street`, `building`) 

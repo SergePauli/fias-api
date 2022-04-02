@@ -2,6 +2,7 @@ class V1::FiasApiController < ApplicationController
   before_action :do_before
   # /fias get action
   # :query - search query (search for)
+  # :id - get address by aoGUID or houseGUID(in case building level)
   # :searchBar  - fulltext OneLineString search mode: 1 is ON, other - OFF
   # :level :parent :regionID  - available filter params
   # :limit :offset - pagination params
@@ -60,7 +61,8 @@ class V1::FiasApiController < ApplicationController
     if !params[:regionID].blank?
       @res = useHouseModel ? @res.regioncode(params[:regionID]) : @res.where(regioncode: params[:regionID])
     end
-    @res = @res.where(aolevel: params[:level].to_sym) if !params[:level].blank? && !useHouseModel
+    @res = useHouseModel ? @res.where(houseguid: params[:id]) : @res.where(aoguid: params[:id]) if !params[:id].blank?
+    @res = @res.where(aolevel: params[:level].to_sym) if !params[:level].blank? && !useHouseModel && params[:id].blank?
     @total_found = params[:total_found].blank? ? false : @res.count
     use_pagination
     begin
